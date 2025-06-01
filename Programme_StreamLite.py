@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 # Titre de l'application
 st.title("Visualisation des fichiers Pals 📊")
 
-# Dictionnaire des fichiers CSV
+# mes fichiers CSV
 csv_files = {
     "Comparaison of ordinary": r"C:\Users\zakar\Pals\Data propre\Projet_Pals\Pals_Data_comparaison_of_ordinary.csv",
     "Hide": r"C:\Users\zakar\Pals\Data propre\Projet_Pals\Pals_Data_hide.csv",
