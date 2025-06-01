@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 # Titre de l'application
 st.title("Visualisation des fichiers Pals 📊")
 
-# mes fichiers CSV
+# Dictionnaire des fichiers CSV
 csv_files = {
     "Comparaison of ordinary": r"C:\Users\zakar\Pals\Data propre\Projet_Pals\Pals_Data_comparaison_of_ordinary.csv",
     "Hide": r"C:\Users\zakar\Pals\Data propre\Projet_Pals\Pals_Data_hide.csv",
@@ -29,20 +29,28 @@ if os.path.exists(path):
     st.dataframe(df)
 
     if st.checkbox("📈 Afficher un graphique"):
-        # Sélection de colonnes numériques automatiquement
-        numeric_cols = df.select_dtypes(include=["float", "int"]).columns.tolist()
 
-        if len(numeric_cols) >= 1:
-            col_x = st.selectbox("🧭 Axe X :", numeric_cols)
-            col_y = st.selectbox("🧭 Axe Y :", numeric_cols, index=1 if len(numeric_cols) > 1 else 0)
+        # Colonnes numériques et catégorielles
+        num_cols = df.select_dtypes(include=["float", "int"]).columns.tolist()
+        cat_cols = df.select_dtypes(exclude=["float", "int"]).columns.tolist()
+
+        if len(num_cols) >= 1 and len(cat_cols) >= 1:
+            # Sélection des axes
+            col_cat = st.selectbox("🧭 Axe Y (catégorie) :", cat_cols)
+            col_val = st.selectbox("🧭 Axe X (valeur numérique) :", num_cols)
 
             # Création du graphe
-            fig, ax = plt.subplots()
-            df.plot(kind="barh", x=col_x, y=col_y, ax=ax, color='skyblue', legend=False)
-            ax.set_xlabel(col_y)
-            ax.set_ylabel(col_x)
-            st.pyplot(fig)
+            fig, ax = plt.subplots(figsize=(8, len(df) * 0.3 + 1))  # Taille dynamique selon nb de lignes
+            df_sorted = df.sort_values(by=col_val, ascending=True)  # Trier pour une meilleure lisibilité
+            df_sorted.plot(kind="barh", x=col_cat, y=col_val, ax=ax, color='skyblue', legend=False)
+
+            ax.set_xlabel(col_val)
+            ax.set_ylabel(col_cat)
+            ax.tick_params(axis="y", labelsize=8)
+            ax.invert_yaxis()  # Le plus haut en haut
+
+            st.pyplot(fig, use_container_width=True)
         else:
-            st.warning("Ce fichier ne contient pas de colonnes numériques à visualiser.")
+            st.warning("Il faut au moins une colonne catégorielle et une colonne numérique pour tracer le graphique.")
 else:
     st.error("❌ Le fichier est introuvable. Vérifie le chemin.")
