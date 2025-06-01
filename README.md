@@ -1,6 +1,9 @@
 # 🐉 Pals Analysis – Optimisation des Stratégies dans Palworld
 
+Diaporama : [Projet Pals.pdf](https://github.com/user-attachments/files/20542765/Projet.Pals.pdf)
+
 ## 🎮 Contexte
+
 
 Amateur de jeux vidéo et passionné par l’univers de **Palworld**, j’ai réalisé un projet d’analyse de données autour des créatures appelées *Pals*. Ces données offrent une opportunité unique d’explorer les caractéristiques, les comportements et les performances de ces compagnons, dans le but d’optimiser à la fois les **stratégies de combat** et la **productivité dans les campements**.
 
