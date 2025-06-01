@@ -1,6 +1,6 @@
 # 🐉 Pals Analysis – Optimisation des Stratégies dans Palworld
 
-Diaporama : [Projet Pals.pdf](https://github.com/user-attachments/files/20542765/Projet.Pals.pdf)
+Diaporama : [Projet Pals-1.pdf](https://github.com/user-attachments/files/20542830/Projet.Pals-1.pdf)
 
 ## 🎮 Contexte
 
